@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/tu-informacion">
-           <i class="fa fa-edit"></i> Evalución Programador Fullstack-Angular
+        <a class="navbar-brand" href="#">
+           <i class="fa fa-edit"></i> Evalución Fullstack-Angular
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
     </div>
 </nav>
@@ -37,7 +37,7 @@
                             <td>{{item.nombre}}</td>
                             <td>{{item.edad}}</td>
                             <td>{{item.sexo}}</td>
-                            <td>{{item.documento}}</td>
+                            <td>{{item.doc}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,7 +60,9 @@
                             <td>{{item.nombre}}</td>
                             <td>{{item.edad}}</td>
                             <td>{{item.sexo}}</td>
-                            <td>{{item.documento}}</td>
+                            <td>
+                                <a *ngIf="item.doc" href="{{item.doc}}" target="_blank">DOCUMENTO</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -78,7 +80,7 @@
                 <h5 class="modal-title" id="modalTitleId"><i class="fa fa-user"></i> Aregar usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="row g-3" #form="ngForm" (ngSubmit)="guardarDatos()">
+            <form class="row g-3" #form="ngForm" (ngSubmit)="guardarDatos()" enctype="multipart/form-data">
                 <div class="modal-body p-3">
                     <div class="col-12">
                         <label for="nombre" class="form-label"><strong class="text-danger">*</strong>

@@ -20,22 +20,20 @@ export class IndexComponent implements OnInit {
   constructor(private service: ApiServerService) { }
 
   ngOnInit(): void {
-    // this.service.obtenerDatos().subscribe(data => {
-    //   this.datos = data.results;
-    //   console.log(this.datos)
-    // });
+    this.service.obtenerDatos().subscribe(data => {
+      this.datos = data.results;
+      console.log(this.datos)
+    });
 
     let arreglo = window.localStorage.getItem('personas');
     this.personas = arreglo ? JSON.parse(arreglo) : this.personas;
+    console.log(this.personas)
   }
 
   guardarDatos() {
     let arreglo = window.localStorage.getItem('personas');
-    if (arreglo) {
-      this.array = JSON.parse(arreglo);
-    } else {
-      this.array = Array();
-    }
+    this.array = arreglo ? this.array = JSON.parse(arreglo) : this.array = Array();
+
     let datos = {
       'nombre': this.nombre.toUpperCase(),
       'edad': this.edad,
